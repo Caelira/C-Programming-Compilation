@@ -10,7 +10,7 @@ void getUserInput()
     int evenOdd;
     printf("Welcome to my compilation of C exercises! :)))\n");
     printf("Author: Prince II L. Olaguera BSIT 1C\n");
-    printf("Please choose a module or exercise to open: \n");
+    printf("Please choose a module or exercise to open (Choose a number 1 - 5): \n");
     printf("1. Module 1: Functions\n");
     printf("2. Module 2: Recursion\n");
     printf("3. Module 3: Arrays\n");
