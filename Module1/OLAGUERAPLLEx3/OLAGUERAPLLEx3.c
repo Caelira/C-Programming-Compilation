@@ -1,0 +1,325 @@
+// Author: Prince II L. Olaguera
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "module1.h"
+// 1. ==================================
+int sum(int numbers[])
+{
+    int summation = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        summation += numbers[i];
+    }
+    return summation;
+}
+
+float average1(int total)
+{
+    return total / 5.0;
+}
+// ==================================
+
+// 2. ==================================
+void feet(int inches)
+{
+    int feet = inches / 12;
+    int remaining_inches = inches % 12;
+    printf("%d inches is %d feet and %d inches\n", inches, feet, remaining_inches);
+}
+// ==================================
+
+// 3. ==================================
+int int_test(float num)
+{
+    if ((int)num != num || num == 0)
+    {
+        return 0; // Not an integer
+    }
+    else if (num < 0)
+    {
+        return -1; // Negative integer
+    }
+    else
+    {
+        return 1; // Positive integer
+    }
+}
+
+// ==================================
+
+// 4. ==================================
+int sum_of_even(int num)
+{
+    return (num % 2 == 0) ? num : 0;
+}
+
+int sum_of_odd(int num)
+{
+    return (num % 2 != 0) ? num : 0;
+}
+// ==================================
+
+// 5. ==================================
+void ascending(int a, int b, int c)
+{
+    int temp;
+    if (a > b)
+    {
+        temp = a;
+        a = b;
+        b = temp;
+    }
+    if (a > c)
+    {
+        temp = a;
+        a = c;
+        c = temp;
+    }
+    if (b > c)
+    {
+        temp = b;
+        b = c;
+        c = temp;
+    }
+    printf("Numbers in ascending order: %d %d %d\n", a, b, c);
+}
+// ==================================
+
+// 6. ==================================
+double perimeter(double length, double width)
+{
+    return 2 * (length + width);
+}
+// ==================================
+
+// 7. ==================================
+double product(double num1, double num2, double num3)
+{
+    return num1 * num2 * num3;
+}
+// ==================================
+
+// 8. ==================================
+double dollar_to_peso(double usd, double exchange_rate)
+{
+    return usd * exchange_rate;
+}
+// ==================================
+
+// 9. ==================================
+bool equal(int num1, int num2, int num3)
+{
+    return (num1 == num2) && (num2 == num3);
+}
+// ==================================
+
+// 10. ==================================
+void display_largest(int num1, int num2, int num3)
+{
+    int largest = (num1 >= num2) ? (num1 >= num3 ? num1 : num3) : (num2 >= num3 ? num2 : num3);
+    printf("The largest number is: %d\n", largest);
+}
+// ==================================
+
+void module1()
+{
+    // 1. Sum and Average
+    int userNumbers[5], totalSum, averageValue, choice;
+    int inchesInput, number, sumEven = 0, sumOdd = 0;
+    int firstNum, secondNum, thirdNum;
+    double length, width, num1, num2, num3;
+    double usd, exchangeRate;
+    int numA, numB, numC;
+    FILE *file = fopen("numbers.txt", "r");
+
+    // display the problems a user might be interested in
+    printf("Choose a problem to solve:\n");
+    printf("1. Write a program which has two functions named \"sum\" and \"average\". The sum function gets the sum of five numbers; while the average function gets its average.\n");
+    printf("2. Write a program which has a function named \"feet\". This function converts a value in inches to its equivalent value in feet and inches.\n");
+    printf("3. Write a program that reads the numbers from a file. The number should be sent to the function int_test(), which returns either 1 if the integer value is positive, or –1 if the number is negative, or zero if it is not an integer or if the number itself is zero.\n");
+    printf("4. Write a program that reads a set of integers from a file, and then finds and prints the sums of the even integers, and odd integers. Do this by writing two functions named \"sum_of_even\" and \"sum_of_odd\" that will perform the needed requirements.\n");
+    printf("5. Write a program that reads three numbers per line from a file until it reaches three zeros in a single line. The program should then output the numbers in ascending order per line. Make sure that three numbers are passed to a function called \"ascending\".\n");
+    printf("6. Write a program which has a function named \"perimeter\". This function gets the perimeter of a rectangle.\n");
+    printf("7. Create a program that computes the product of three numbers. Do this by writing a function named \"product\" which has three parameters (the numbers itself).\n");
+    printf("8. Write a program that converts US Dollars (USD) to Philippine Peso (PhP). Include a function called \"dollar_to_peso\" that will convert the required currency. Think of the appropriate parameters for this problem requirement.\n");
+    printf("9. Write a program that determines if the three numbers are all equal. Also, write a function named \"equal\" that will perform the needed requirement.\n");
+    printf("10. Write a program which has a function that displays the largest among the three given numbers.\n");
+
+    // Ask user for the problem they want to solve
+    printf("Enter the number of the problem you want to solve (1- 10): ");
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+    // choice 1: Sum and Average
+    case 1:
+    {
+        int userNumbers[5], totalSum;
+        float averageValue;
+        // user prompt
+        printf("Please enter 5 numbers:\n");
+
+        // get user input
+        for (int i = 0; i < 5; i++)
+        {
+            printf("Enter number %d: ", i + 1);
+            scanf("%d", &userNumbers[i]);
+        }
+        // call the functions
+        totalSum = sum(userNumbers);
+        averageValue = average1(totalSum);
+        // display resultd
+        printf("Total Sum: %d\n", totalSum);
+        printf("Average: %.2f\n", averageValue);
+        break;
+    }
+        // choice 2: Feet
+    case 2:
+    {
+        int inchesInput;
+        // user prompt
+        printf("Enter the number of inches to convert to feet: ");
+        // get user input and call function
+        scanf("%d", &inchesInput);
+        feet(inchesInput);
+        break;
+    }
+    // choice 3: int_test
+    case 3:
+    {
+        FILE *file = fopen("Module1/OLAGUERAPLLEx3/numbers(3).txt", "r");
+        float number;
+
+        if (file == NULL)
+        {
+            printf("File not found.\n");
+            return;
+        }
+
+        while (fscanf(file, "%f", &number) != EOF)
+        {
+            printf("Value: %.2f, Result: %d\n", number, int_test(number));
+        }
+
+        fclose(file);
+        break;
+    }
+    // choice 4: sum_of_even and sum_of_odd
+    case 4:
+    {
+        FILE *file = fopen("Module1/OLAGUERAPLLEx3/numbers(4).txt", "r");
+        int number, sumEven = 0, sumOdd = 0;
+        // check if file exists
+        if (file == NULL)
+        {
+            printf("Error: File not found.\n");
+            return;
+        }
+        // read file and call functions
+        while (fscanf(file, "%d", &number) != EOF)
+        {
+            sumEven += sum_of_even(number);
+            sumOdd += sum_of_odd(number);
+        }
+        fclose(file);
+        // display results
+        printf("Total Sum of Even Numbers: %d\n", sumEven);
+        printf("Total Sum of Odd Numbers: %d\n", sumOdd);
+        break;
+    }
+    // choice 5: ascending
+    case 5:
+    {
+        FILE *file = fopen("Module1/OLAGUERAPLLEx3/numbers(5).txt", "r");
+        if (file == NULL)
+        {
+            printf("Error: File not found.\n");
+            return;
+        }
+
+        int firstNum, secondNum, thirdNum;
+
+        while (fscanf(file, "%d %d %d", &firstNum, &secondNum, &thirdNum) == 3)
+        {
+            //check if the three numbers are zero then terminate the program
+            if (firstNum == 0 && secondNum == 0 && thirdNum == 0)
+            {
+                break;
+            }
+            // Call the ascending function
+            ascending(firstNum, secondNum, thirdNum);
+        }
+
+        fclose(file);
+        break;
+    }
+    // choice 6: perimeter
+    case 6:
+    {
+        double length, width;
+        // get user input
+        printf("Enter the length and width of the rectangle (separated by spaces): ");
+        scanf("%lf %lf", &length, &width);
+        // call function perimeter to get the perimeter
+        printf("Perimeter of the rectangle: %.2f\n", perimeter(length, width));
+        break;
+    }
+    // choice 7: product
+    case 7:
+    {
+        double num1, num2, num3;
+        // get user input
+        printf("Please enter 3 numbers to calculate the product (separated by spaces): ");
+        scanf("%lf %lf %lf", &num1, &num2, &num3);
+        // call function product to get the product
+        printf("Product of the numbers: %.2f\n", product(num1, num2, num3));
+        break;
+    }
+    // choice 8: dollar_to_peso
+    case 8:
+    {
+        double usd, exchangeRate;
+        // get user input
+        printf("Enter the amount in USD and the exchange rate to Peso (separated by spaces): ");
+        scanf("%lf %lf", &usd, &exchangeRate);
+        // call function dollar_to_peso to get the amount in Peso
+        printf("Amount in Peso: %.2f\n", dollar_to_peso(usd, exchangeRate));
+        break;
+    }
+    // choice 9: equal
+    case 9:
+    {
+        int numA, numB, numC;
+        // get user input
+        printf("Please enter 3 numbers to check if they are equal (separated by spaces): ");
+        scanf("%d %d %d", &numA, &numB, &numC);
+        // call function equal to check if the numbers given by the user are equal
+        if (equal(numA, numB, numC))
+        {
+            printf("All three numbers are equal.\n");
+        }
+        else
+        {
+            printf("The numbers are not equal.\n");
+        }
+        break;
+    }
+    // choice 10: display_largest
+    case 10:
+    {
+        int numA, numB, numC;
+        // get user input
+        printf("Enter 3 numbers to find the largest (separated by spaces): ");
+        scanf("%d %d %d", &numA, &numB, &numC);
+        // call function display_largest to get the largest number
+        display_largest(numA, numB, numC);
+        break;
+    }
+    // default case if the user enters an invalid input
+    default:
+        printf("Invalid choice. Please select a number between 1 and 10.\n");
+        break;
+    }
+
+}
