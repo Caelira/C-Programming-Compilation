@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "exercise2.h"
+#include <stdlib.h>
+#include "../Compiled_Olaguera.h"
 //function that sorts the array in ascending manner (bubble sort)
 void sortNumbers(int nums[], int length)
 {
@@ -103,4 +105,26 @@ void exercise2()
 	//calls the displayValues function
 	displayValues(nums, length);
 	
+	while (1)
+    {
+        printf("Choose a number: \n");
+        printf("1. Back\n");
+        printf("2. Do the problem again\n");
+        scanf("%d", &choice);
+		while(getchar() != '\n');
+		system("cls");
+        switch (choice)
+        {
+        case 1:
+            system("cls");
+            getUserInput();
+            break;
+        case 2:
+            system("cls");
+            exercise2();
+            break;
+        default:
+            printf("Invalid choice\n");
+        }
+    }
 }

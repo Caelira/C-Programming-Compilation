@@ -1,11 +1,14 @@
 // Author: Prince II L. Olaguera
 
 #include <stdio.h>
+#include <stdlib.h>
+#include "../../Compiled_Olaguera.h"
 #include "../module3.h"
 
 // Function to validate and store unique numbers
 void validate(int one[], int unique[], int length)
 {
+
     int i, j, k = 0;
     for (i = 0; i < length; i++)
     {
@@ -121,6 +124,7 @@ void module3_Even()
     switch (choice)
     {
     case 2:
+        system("cls");
         for (i = 0; i < 15; i++)
         {
             fscanf(input, "%d", &one[i]);
@@ -145,6 +149,7 @@ void module3_Even()
         fclose(input);
         break;
     case 4:
+        system("cls");
         split(list, positive, negative, 20);
         printf("Positive array: ");
         for (i = 0; i < 20 && positive[i] != 0; i++)
@@ -159,6 +164,7 @@ void module3_Even()
         }
         break;
     case 6:
+        system("cls");
         fscanf(numFile, "%d", &len);
         int numbers[15];
         for (i = 0; i < 15; i++)
@@ -169,6 +175,7 @@ void module3_Even()
         fclose(numFile);
         break;
     case 8:
+        system("cls");
         printf("Enter a number that you want to search from the list: ");
         scanf("%d", &userNum);
 
@@ -185,6 +192,7 @@ void module3_Even()
 
         break;
     case 10:
+        system("cls");
         for (i = 0; i < 2; i++)
         {
             for (j = 0; j < 3; j++)
@@ -206,5 +214,26 @@ void module3_Even()
     default:
         break;
     }
-
+    int menu;
+    while (1)
+    {
+        printf("Choose a number: \n");
+        printf("1. Back to main menu\n");
+        printf("2. Back\n");
+        scanf("%d", &menu);
+        while(getchar() != '\n');
+        switch (menu)
+        {
+        case 1:
+            system("cls");
+            getUserInput();
+            break;
+        case 2:
+            system("cls");
+            module3_Even();
+            break;
+        default:
+            printf("Invalid choice\n");
+        }
+    }
 }

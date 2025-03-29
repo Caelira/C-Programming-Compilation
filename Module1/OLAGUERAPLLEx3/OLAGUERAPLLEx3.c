@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "module1.h"
+#include "../../Compiled_Olaguera.h"
 // 1. ==================================
 int sum(int numbers[])
 {
@@ -155,6 +156,7 @@ void module1()
     // choice 1: Sum and Average
     case 1:
     {
+        system("cls");
         int userNumbers[5], totalSum;
         float averageValue;
         // user prompt
@@ -177,6 +179,7 @@ void module1()
         // choice 2: Feet
     case 2:
     {
+        system("cls");
         int inchesInput;
         // user prompt
         printf("Enter the number of inches to convert to feet: ");
@@ -188,6 +191,7 @@ void module1()
     // choice 3: int_test
     case 3:
     {
+        system("cls");
         FILE *file = fopen("Module1/OLAGUERAPLLEx3/numbers(3).txt", "r");
         float number;
 
@@ -208,6 +212,7 @@ void module1()
     // choice 4: sum_of_even and sum_of_odd
     case 4:
     {
+        system("cls");
         FILE *file = fopen("Module1/OLAGUERAPLLEx3/numbers(4).txt", "r");
         int number, sumEven = 0, sumOdd = 0;
         // check if file exists
@@ -231,6 +236,7 @@ void module1()
     // choice 5: ascending
     case 5:
     {
+        system("cls");
         FILE *file = fopen("Module1/OLAGUERAPLLEx3/numbers(5).txt", "r");
         if (file == NULL)
         {
@@ -257,6 +263,7 @@ void module1()
     // choice 6: perimeter
     case 6:
     {
+        system("cls");
         double length, width;
         // get user input
         printf("Enter the length and width of the rectangle (separated by spaces): ");
@@ -268,6 +275,7 @@ void module1()
     // choice 7: product
     case 7:
     {
+        system("cls");
         double num1, num2, num3;
         // get user input
         printf("Please enter 3 numbers to calculate the product (separated by spaces): ");
@@ -279,6 +287,7 @@ void module1()
     // choice 8: dollar_to_peso
     case 8:
     {
+        system("cls");
         double usd, exchangeRate;
         // get user input
         printf("Enter the amount in USD and the exchange rate to Peso (separated by spaces): ");
@@ -290,6 +299,7 @@ void module1()
     // choice 9: equal
     case 9:
     {
+        system("cls");
         int numA, numB, numC;
         // get user input
         printf("Please enter 3 numbers to check if they are equal (separated by spaces): ");
@@ -308,6 +318,7 @@ void module1()
     // choice 10: display_largest
     case 10:
     {
+        system("cls");
         int numA, numB, numC;
         // get user input
         printf("Enter 3 numbers to find the largest (separated by spaces): ");
@@ -320,6 +331,28 @@ void module1()
     default:
         printf("Invalid choice. Please select a number between 1 and 10.\n");
         break;
+    }
+    int menu;
+    while (1)
+    {
+        printf("Choose a number: \n");
+        printf("1. Back to main menu\n");
+        printf("2. back\n");
+        scanf("%d", &menu);
+        while(getchar() != '\n');
+        switch (menu)
+        {
+        case 1:
+            system("cls");
+            getUserInput();
+            break;
+        case 2:
+            system("cls");
+            module1();
+            break;
+        default:
+            printf("Invalid choice\n");
+        }
     }
 
 }

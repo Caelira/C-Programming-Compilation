@@ -5,6 +5,7 @@
         "module3.h": "c",
         "module1.h": "c",
         "module2.h": "c",
-        "exercise1.h": "c"
+        "exercise1.h": "c",
+        "stdlib.h": "c"
     }
 }

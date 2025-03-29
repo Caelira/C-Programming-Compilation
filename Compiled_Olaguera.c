@@ -38,7 +38,6 @@ void getUserInput()
 {
     int choice_module;
     int evenOdd;
-
     while (1)
     {
         printf("Welcome to my compilation of C exercises! :)))\n");
@@ -90,7 +89,7 @@ void getUserInput()
             break;
         case 6:
             printf("Thank you, come again!\n");
-            return;
+            exit(0);
             break;
 
         default:
@@ -101,6 +100,7 @@ void getUserInput()
 }
 int main()
 {
+    system("cls");
     welcomeMessage();
     getUserInput();
     return 0;

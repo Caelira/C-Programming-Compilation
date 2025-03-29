@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include "module2.h"
+#include <stdlib.h>
+#include "../../Compiled_Olaguera.h"
 #define MAX 1000 // limit for memoization
 
 // Array to store Fibonacci numbers for memoization
@@ -84,5 +86,27 @@ void module2()
         printf("Invalid choice. Please select 1 or 2.\n");
         break;
     }
-
+    int menu;
+    while (1)
+    {
+        printf("Choose a number: \n");
+        printf("1. Back to main menu\n");
+        printf("2. Back\n");
+        scanf("%d", &menu);
+        while(getchar() != '\n');
+    system("cls");
+        switch (menu)
+        {
+        case 1:
+            system("cls");
+            getUserInput();
+            break;
+        case 2:
+            system("cls");
+            module2();
+            break;
+        default:
+            printf("Invalid choice\n");
+        }
+    }
 }

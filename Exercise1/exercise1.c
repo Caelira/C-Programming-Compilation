@@ -50,6 +50,7 @@ void exercise1()
         printf("1. Back\n");
         printf("2. Do the problem again\n");
         scanf("%d", &choice);
+        while(getchar() != '\n');
         switch (choice)
         {
         case 1:
@@ -62,7 +63,6 @@ void exercise1()
             break;
         default:
             printf("Invalid choice\n");
-            break;
         }
     }
     system("cls");
