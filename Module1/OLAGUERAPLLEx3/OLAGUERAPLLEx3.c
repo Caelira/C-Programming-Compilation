@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "module1.h"
 #include "../../Compiled_Olaguera.h"
+#include <windows.h>
 // 1. ==================================
 int sum(int numbers[])
 {
@@ -134,19 +135,63 @@ void module1()
     int numA, numB, numC;
     FILE *file = fopen("numbers.txt", "r");
 
-    // display the problems a user might be interested in
-    printf("Choose a problem to solve:\n");
-    printf("1. Write a program which has two functions named \"sum\" and \"average\". The sum function gets the sum of five numbers; while the average function gets its average.\n");
-    printf("2. Write a program which has a function named \"feet\". This function converts a value in inches to its equivalent value in feet and inches.\n");
-    printf("3. Write a program that reads the numbers from a file. The number should be sent to the function int_test(), which returns either 1 if the integer value is positive, or –1 if the number is negative, or zero if it is not an integer or if the number itself is zero.\n");
-    printf("4. Write a program that reads a set of integers from a file, and then finds and prints the sums of the even integers, and odd integers. Do this by writing two functions named \"sum_of_even\" and \"sum_of_odd\" that will perform the needed requirements.\n");
-    printf("5. Write a program that reads three numbers per line from a file until it reaches three zeros in a single line. The program should then output the numbers in ascending order per line. Make sure that three numbers are passed to a function called \"ascending\".\n");
-    printf("6. Write a program which has a function named \"perimeter\". This function gets the perimeter of a rectangle.\n");
-    printf("7. Create a program that computes the product of three numbers. Do this by writing a function named \"product\" which has three parameters (the numbers itself).\n");
-    printf("8. Write a program that converts US Dollars (USD) to Philippine Peso (PhP). Include a function called \"dollar_to_peso\" that will convert the required currency. Think of the appropriate parameters for this problem requirement.\n");
-    printf("9. Write a program that determines if the three numbers are all equal. Also, write a function named \"equal\" that will perform the needed requirement.\n");
-    printf("10. Write a program which has a function that displays the largest among the three given numbers.\n");
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int consoleWidth, padding;
 
+    GetConsoleScreenBufferInfo(hConsole, &csbi);
+    consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
+    char *line1 = "+--------------------------------+";
+    char *line2 = "|            Module 1            |";
+    char *line3 = "|            Function            |";
+    char *line4 = "+--------------------------------+";
+
+    padding = (consoleWidth - 36) / 2;
+
+    printf("%*s%s\n", padding, "", line1);
+    printf("%*s%s\n", padding, "", line2);
+    printf("%*s%s\n", padding, "", line3);
+    printf("%*s%s\n", padding, "", line4);
+
+    // display the problems a user might be interested in
+    printf("Choose a problem to solve:\n\n");
+
+    printf("1. Sum and Average: Create two functions:\n");
+    printf("   - \"sum\": Computes the sum of five numbers.\n");
+    printf("   - \"average\": Computes the average of those numbers.\n\n");
+
+    printf("2. Inches to Feet: Write a function \"feet\" to convert inches\n");
+    printf("   into feet and inches.\n\n");
+
+    printf("3. Integer Test: Read numbers from a file and pass them to \"int_test()\".\n");
+    printf("   - Returns  1 if the number is positive.\n");
+    printf("   - Returns -1 if the number is negative.\n");
+    printf("   - Returns  0 if it's zero or not an integer.\n\n");
+
+    printf("4. Sum of Evens and Odds: Read integers from a file and compute:\n");
+    printf("   - \"sum_of_even\": Sum of even numbers.\n");
+    printf("   - \"sum_of_odd\": Sum of odd numbers.\n\n");
+
+    printf("5. Ascending Order: Read three numbers per line from a file.\n");
+    printf("   - Stop when three zeros appear in a single line.\n");
+    printf("   - Sort numbers in ascending order using the function \"ascending\".\n\n");
+
+    printf("6. Perimeter of a Rectangle: Write a function \"perimeter\" that\n");
+    printf("   calculates the perimeter of a rectangle.\n\n");
+
+    printf("7. Product of Three Numbers: Create a function \"product\"\n");
+    printf("   that computes the product of three given numbers.\n\n");
+
+    printf("8. Currency Conversion: Convert USD to PHP using a function\n");
+    printf("   named \"dollar_to_peso\". Define appropriate parameters.\n\n");
+
+    printf("9. Equality Check: Write a function \"equal\" to determine\n");
+    printf("   if three numbers are all equal.\n\n");
+
+    printf("10. Largest Number: Write a function to display the largest\n");
+    printf("    of three given numbers.\n");
+    printf("11. Exit\n");
     // Ask user for the problem they want to solve
     printf("Enter the number of the problem you want to solve (1- 10): ");
     scanf("%d", &choice);
@@ -248,7 +293,7 @@ void module1()
 
         while (fscanf(file, "%d %d %d", &firstNum, &secondNum, &thirdNum) == 3)
         {
-            //check if the three numbers are zero then terminate the program
+            // check if the three numbers are zero then terminate the program
             if (firstNum == 0 && secondNum == 0 && thirdNum == 0)
             {
                 break;
@@ -327,9 +372,13 @@ void module1()
         display_largest(numA, numB, numC);
         break;
     }
+    case 11:
+        printf("Thank you, come again!\n");
+        exit(0);
+        break;
     // default case if the user enters an invalid input
     default:
-        printf("Invalid choice. Please select a number between 1 and 10.\n");
+        printf("Invalid choice. Please select a number between 1 and 11.\n");
         break;
     }
     int menu;
@@ -337,9 +386,11 @@ void module1()
     {
         printf("Choose a number: \n");
         printf("1. Back to main menu\n");
-        printf("2. back\n");
+        printf("2. Back to functions menu\n");
+        printf("3. Exit\n");
         scanf("%d", &menu);
-        while(getchar() != '\n');
+        while (getchar() != '\n')
+            ;
         switch (menu)
         {
         case 1:
@@ -350,9 +401,12 @@ void module1()
             system("cls");
             module1();
             break;
+        case 3:
+            printf("Thank you, come again!\n");
+            exit(0);
+            break;
         default:
             printf("Invalid choice\n");
         }
     }
-
 }

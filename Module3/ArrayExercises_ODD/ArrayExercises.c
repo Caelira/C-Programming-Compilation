@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "../module3.h"
 #include <stdlib.h>
+#include <windows.h>
 #include "../../Compiled_Olaguera.h"
 // Function to print the array in reverse order
 void reverse(int nums[], int length)
@@ -103,6 +104,24 @@ void module3_Odd()
     int nums[length];
     fscanf(positiveNegative, "%d", &length2);
     int nums2[length2];
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int consoleWidth, padding;
+
+    GetConsoleScreenBufferInfo(hConsole, &csbi);
+    consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
+    char *line1 = "+--------------------------------+";
+    char *line2 = "|            Module 3            |";
+    char *line3 = "|          Arrays - Odd          |";
+    char *line4 = "+--------------------------------+";
+
+    padding = (consoleWidth - 36) / 2;
+
+    printf("%*s%s\n", padding, "", line1);
+    printf("%*s%s\n", padding, "", line2);
+    printf("%*s%s\n", padding, "", line3);
+    printf("%*s%s\n", padding, "", line4);
 
     // Display problem choices
     printf("Choose the problem you want to solve (Odd numbers, choose 1 - 9):\n");
@@ -111,7 +130,9 @@ void module3_Odd()
     printf("5. Sum of corresponding indices in two arrays.\n");
     printf("7. Sum of positive and negative numbers from a file.\n");
     printf("9. Append two arrays and display the result.\n");
+    printf("11. Exit\n");
     printf("Enter your choice: ");
+
     scanf("%d", &choice);
 
     switch (choice)
@@ -189,7 +210,9 @@ void module3_Odd()
         }
         printf("\n");
         break;
-
+    case 11:
+        printf("Thank you, come again!\n");
+        exit(0);
     default:
         printf("Invalid input\n");
         break;
@@ -199,9 +222,11 @@ void module3_Odd()
     {
         printf("Choose a number: \n");
         printf("1. Back to main menu\n");
-        printf("2. Back\n");
+        printf("2. Back to array - odd menu\n");
+        printf("3. Exit\n");
         scanf("%d", &menu);
-        while(getchar() != '\n');
+        while (getchar() != '\n')
+            ;
         switch (menu)
         {
         case 1:
@@ -212,6 +237,9 @@ void module3_Odd()
             system("cls");
             module3_Odd();
             break;
+        case 3:
+            printf("Thank you, come again!\n");
+            exit(0);
         default:
             printf("Invalid choice\n");
         }

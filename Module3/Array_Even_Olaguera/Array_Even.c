@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "../../Compiled_Olaguera.h"
 #include "../module3.h"
 
@@ -113,13 +114,31 @@ void module3_Even()
     int matrix2[2][3] = {{6, 5, 4}, {3, 4, 5}};
     int matrix3[2][3], j;
     // ===================================
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int consoleWidth, padding;
 
+    GetConsoleScreenBufferInfo(hConsole, &csbi);
+    consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
+    char *line1 = "+--------------------------------+";
+    char *line2 = "|            Module 3            |";
+    char *line3 = "|          Array - Even          |";
+    char *line4 = "+--------------------------------+";
+
+    padding = (consoleWidth - 36) / 2;
+
+    printf("%*s%s\n", padding, "", line1);
+    printf("%*s%s\n", padding, "", line2);
+    printf("%*s%s\n", padding, "", line3);
+    printf("%*s%s\n", padding, "", line4);
     printf("Choose the problem you want to solve (Even numbers, choose the number(even)):\n");
     printf("2. Store unique numbers from an array.\n");
     printf("4. Split the array into positive and negative numbers.\n");
     printf("6. Find the maximum and minimum elements of an array.\n");
     printf("8. Find the index of a number in an array.\n");
     printf("10. Add two matrices.\n");
+    printf("12. Exit\n");
     scanf("%d", &choice);
     switch (choice)
     {
@@ -211,6 +230,9 @@ void module3_Even()
         }
         // lovelots maam <3
         break;
+    case 12:
+        printf("Thank you, come again!\n");
+        exit(0);
     default:
         break;
     }
@@ -219,9 +241,11 @@ void module3_Even()
     {
         printf("Choose a number: \n");
         printf("1. Back to main menu\n");
-        printf("2. Back\n");
+        printf("2. Back to array - even menu\n");
+        printf("3. Exit\n");
         scanf("%d", &menu);
-        while(getchar() != '\n');
+        while (getchar() != '\n')
+            ;
         switch (menu)
         {
         case 1:
@@ -232,6 +256,9 @@ void module3_Even()
             system("cls");
             module3_Even();
             break;
+        case 3:
+            printf("Thank you, come again!\n");
+            exit(0);
         default:
             printf("Invalid choice\n");
         }

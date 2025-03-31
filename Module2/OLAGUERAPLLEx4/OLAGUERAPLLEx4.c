@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include "module2.h"
+#include <windows.h>
 #include <stdlib.h>
 #include "../../Compiled_Olaguera.h"
 #define MAX 1000 // limit for memoization
@@ -43,11 +44,29 @@ void module2()
     {
         memo[i] = -1;
     }
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int consoleWidth, padding;
 
+    GetConsoleScreenBufferInfo(hConsole, &csbi);
+    consoleWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+
+    char *line1 = "+--------------------------------+";
+    char *line2 = "|            Module 2            |";
+    char *line3 = "|            Recursion           |";
+    char *line4 = "+--------------------------------+";
+
+    padding = (consoleWidth - 36) / 2;
+
+    printf("%*s%s\n", padding, "", line1);
+    printf("%*s%s\n", padding, "", line2);
+    printf("%*s%s\n", padding, "", line3);
+    printf("%*s%s\n", padding, "", line4);
     // Prompt user to choose operation
     printf("Choose an operation:\n");
     printf("1. Fibonacci\n");
     printf("2. Factorial\n");
+    printf("3. Exit\n");
     printf("Enter your choice (1 or 2): ");
     scanf("%d", &choice);
 
@@ -81,7 +100,9 @@ void module2()
         }
         printf("Factorial of %d is %llu\n", n, factorial(n));
         break;
-
+    case 3:
+        printf("Thank you, come again!\n");
+        exit(0);
     default:
         printf("Invalid choice. Please select 1 or 2.\n");
         break;
@@ -91,10 +112,12 @@ void module2()
     {
         printf("Choose a number: \n");
         printf("1. Back to main menu\n");
-        printf("2. Back\n");
+        printf("2. Back to recursion menu\n");
+        printf("3. Exit\n");
         scanf("%d", &menu);
-        while(getchar() != '\n');
-    system("cls");
+        while (getchar() != '\n')
+            ;
+        system("cls");
         switch (menu)
         {
         case 1:
@@ -104,6 +127,9 @@ void module2()
         case 2:
             system("cls");
             module2();
+        case 3:
+            printf("Thank you, come again!\n");
+            exit(0);
             break;
         default:
             printf("Invalid choice\n");
