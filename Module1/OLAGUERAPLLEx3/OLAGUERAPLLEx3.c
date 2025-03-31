@@ -157,40 +157,18 @@ void module1()
     // display the problems a user might be interested in
     printf("Choose a problem to solve:\n\n");
 
-    printf("1. Sum and Average: Create two functions:\n");
-    printf("   - \"sum\": Computes the sum of five numbers.\n");
-    printf("   - \"average\": Computes the average of those numbers.\n\n");
+    printf("Choose a problem to solve:\n");
+printf("1. Sum and Average: Implement \"sum\" and \"average\" functions for five numbers.\n");
+printf("2. Inches to Feet: Implement \"feet\" function to convert inches to feet and inches.\n");
+printf("3. Integer Test: Read numbers from a file and use \"int_test()\" to check if they are positive, negative, or zero.\n");
+printf("4. Sum of Evens and Odds: Use \"sum_of_even\" and \"sum_of_odd\" functions to compute sums from a file.\n");
+printf("5. Ascending Order: Read three numbers per line from a file until three zeros appear, then sort using \"ascending\".\n");
+printf("6. Perimeter: Implement \"perimeter\" function to compute the perimeter of a rectangle.\n");
+printf("7. Product: Implement \"product\" function to compute the product of three numbers.\n");
+printf("8. Currency Conversion: Implement \"dollar_to_peso\" function to convert USD to PHP.\n");
+printf("9. Equality Check: Implement \"equal\" function to determine if three numbers are equal.\n");
+printf("10. Largest Number: Implement a function to find the largest among three numbers.\n");
 
-    printf("2. Inches to Feet: Write a function \"feet\" to convert inches\n");
-    printf("   into feet and inches.\n\n");
-
-    printf("3. Integer Test: Read numbers from a file and pass them to \"int_test()\".\n");
-    printf("   - Returns  1 if the number is positive.\n");
-    printf("   - Returns -1 if the number is negative.\n");
-    printf("   - Returns  0 if it's zero or not an integer.\n\n");
-
-    printf("4. Sum of Evens and Odds: Read integers from a file and compute:\n");
-    printf("   - \"sum_of_even\": Sum of even numbers.\n");
-    printf("   - \"sum_of_odd\": Sum of odd numbers.\n\n");
-
-    printf("5. Ascending Order: Read three numbers per line from a file.\n");
-    printf("   - Stop when three zeros appear in a single line.\n");
-    printf("   - Sort numbers in ascending order using the function \"ascending\".\n\n");
-
-    printf("6. Perimeter of a Rectangle: Write a function \"perimeter\" that\n");
-    printf("   calculates the perimeter of a rectangle.\n\n");
-
-    printf("7. Product of Three Numbers: Create a function \"product\"\n");
-    printf("   that computes the product of three given numbers.\n\n");
-
-    printf("8. Currency Conversion: Convert USD to PHP using a function\n");
-    printf("   named \"dollar_to_peso\". Define appropriate parameters.\n\n");
-
-    printf("9. Equality Check: Write a function \"equal\" to determine\n");
-    printf("   if three numbers are all equal.\n\n");
-
-    printf("10. Largest Number: Write a function to display the largest\n");
-    printf("    of three given numbers.\n");
     printf("11. Exit\n");
     // Ask user for the problem they want to solve
     printf("Enter the number of the problem you want to solve (1- 10): ");
